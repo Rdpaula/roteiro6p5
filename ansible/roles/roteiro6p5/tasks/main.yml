@@ -1,0 +1,28 @@
+---
+# tasks file for serverApache
+
+- name: "Atualizar cache de pacotes"
+  apt:
+    update_cache: yes
+
+- name: "Instalar lighttpd"
+  apt:
+    name: lighttpd
+    state: present
+
+- name: "Iniciar o serviço lighttpd e habilitá-lo na inicialização"
+  service:
+    name: lighttpd
+    state: started
+    enabled: yes
+
+- name: "Substituir o arquivo HTML padrão"
+  copy:
+   src: files/arquivo.html
+   dest: /meu_diretorio_web/index.html
+
+- name: "Copiar o arquivo de configuração do lighttpd"
+  template:
+    src: templates/lighttpd.conf
+    dest: /etc/lighttpd/lighttpd.conf 
+  notify: restartLighttpd

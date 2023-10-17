@@ -1,0 +1,4 @@
+---
+# vars file for roteiro6p5
+server_document_root: '"/meu_diretorio_web"'
+server_port: "8080"

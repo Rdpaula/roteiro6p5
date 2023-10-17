@@ -1,0 +1,7 @@
+---
+# handlers file for roteiro6p5
+
+- name: "restartLighttpd"
+  service:
+    name: lighttpd
+    state: restarted  
